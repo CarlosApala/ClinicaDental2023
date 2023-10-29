@@ -10,6 +10,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class Usuarios extends Model implements JWTSubject
 {
     use HasFactory;
+    protected $table="usuarios";
 
     public function getJWTIdentifier()
     {

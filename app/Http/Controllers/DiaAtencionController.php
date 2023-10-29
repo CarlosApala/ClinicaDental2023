@@ -14,7 +14,7 @@ class DiaAtencionController extends Controller
     public function index()
     {
         //
-        $dia = DiaAtencion::where('dia', 'lunes')->first();
+        $dia = DiaAtencion::all();
         /* $listaValores=[];
         foreach ($dia as $key => $value) {
             Log::info("valores".$key);

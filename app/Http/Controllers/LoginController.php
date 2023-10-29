@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -13,7 +12,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        //$this->middleware('auth:api', ['except' => ['login']]);
     }
 
     public function loginUser(Request $request)
@@ -26,6 +25,7 @@ class LoginController extends Controller
         $password=$data['password'];
 
         $usuario=Usuarios::where('email',$email)->first();
+        echo("hola mundo");
 
         if (!$usuario) {
             return response()->json([
@@ -43,9 +43,9 @@ class LoginController extends Controller
             ]);
         }
 
-        $data = [
+        $data = [       
             'data' => [
-                'token' => auth()->attempt(['email','password']), // Generar un UUID usando el Helper Str
+                
                 'user' => [
                     'email' =>$usuario->email,
                     'username' => $usuario->name,
